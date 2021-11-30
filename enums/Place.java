@@ -51,14 +51,7 @@ public class Place {
     * @return числовое значение объекта */
     @Override
     public int hashCode() {
-        switch (to) {
-            case h2: return 1;
-            case i2: return 2;
-            case f2: return 3;
-            case t2: return 4;
-            case e2: return 5;
-            default: return 0;
-        }
+        return 1 * to.hashCode() + 2 * where.hashCode();
     }
     /**
     * Обязатльный к переопределению метод.
@@ -68,9 +61,10 @@ public class Place {
     */
     @Override
     public boolean equals(Object p) {
-        if (this.hashCode() == p.hashCode())
-            { return true; }
-        return false;
+        if (p == null) { return false; }
+        if (this == p) { return true; }
+        if ( !(p instanceof Place) ) { return false; }
+        return ( (Place)p ).to.equals(to)
+            && ( (Place)p ).where.equals(where);
     }
-    
 }
